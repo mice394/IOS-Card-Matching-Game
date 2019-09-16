@@ -14,13 +14,16 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var timerLabel: UILabel!
     
+    @IBOutlet weak var pairCounter: UILabel!
     
     var model = CardModel()
     var cardArray = [Card]()
     var firstFlippedCardIndex:IndexPath?
     
     var timer:Timer?
-    var milliseconds:Float = 25 * 1000
+    var milliseconds:Float = 100 * 1000
+    
+    var num_pairs = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cardArray = model.getCards()
         collectionView.delegate = self
         collectionView.dataSource = self
+        
+        pairCounter.text = "Pairs Matched: 0/12"
         
         // Timer Creation
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(timerElapsed), userInfo: nil, repeats: true)
@@ -112,6 +117,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         // Comparing the 2 cards
         if cardOne.imageName == cardTwo.imageName {
             SoundManager.playSound(.match)
+            
+            num_pairs += 1;
+            pairCounter.text = "Pairs Matched: \(num_pairs)/12"
             
             cardOne.isMatched = true
             cardTwo.isMatched = true

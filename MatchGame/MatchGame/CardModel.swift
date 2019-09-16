@@ -18,7 +18,7 @@ class CardModel {
         var generatedCardsArray = [Card]()
         
         // Randomly generate pairs of cards (8 pairs)
-        while generatedNumbersArray.count < 8 {
+        while generatedNumbersArray.count < 12 {
             // Get a random number
             let randomNumber = arc4random_uniform(13) + 1
             
