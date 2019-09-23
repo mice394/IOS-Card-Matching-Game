@@ -1,5 +1,10 @@
 # IOS Card Matching Game
 My personal take on the classic card matching game on IOS devices.
+MatchGame File - Original version
+               - Produces 8 pairs
+MatchGame2 - 2nd version
+           - Produces 13 pairs
+           - Has a live count on how many pairs matched
 
 ## Table of Contents
 * [General Information](#General-Information)
